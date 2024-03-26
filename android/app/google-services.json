@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "459150718547",
+    "project_id": "diyangjan",
+    "storage_bucket": "diyangjan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459150718547:android:2441f43f07ced9ad9278a6",
+        "android_client_info": {
+          "package_name": "com.example.divyangjan_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf9Q4OSSlOzjKDNFnfg3QO-3huHAs2FMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,12 +1,9 @@
-
-// ignore_for_file: non_constant_identifier_names
-
-
-// import 'package:divyangjan/widgets/dropDown_widget.dart';
-
-import 'package:divyangjan_frontend/Resources/Colors/appColors.dart';
-import 'package:divyangjan_frontend/Resources/Strings/appString.dart';
+import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
+import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/controllers/dropdown_Controller.dart';
+import 'package:divyangjan_frontend/screens/signin_screen.dart';
+import 'package:divyangjan_frontend/widgets/button_widget.dart';
+import 'package:divyangjan_frontend/widgets/dropDown_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +14,50 @@ class RegistrationScreen extends StatelessWidget {
   final TextEditingController ageCtrl = TextEditingController();
   final TextEditingController despCtrl = TextEditingController();
   final TextEditingController dropdwnCtrl = TextEditingController();
+  final TextEditingController docCtrl = TextEditingController();
 
-  final List<String>genderOptions = ["Male","Female","Others"];
-  final List<String>occupationOptions = ["Public Sector","Private Sector","Self-Empolyed","Unempolyed,Farmer"];
-  final List<String>statesOptions = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Telangana","Uttar Pradesh","Uttarakhand","West Bengal"];
+  final List<String> genderOptions = ["Male", "Female", "Others"];
+  final List<String> occupationOptions = [
+    "Public Sector",
+    "Private Sector",
+    "Self-Empolyed",
+    "Unempolyed,Farmer"
+  ];
+  final List<String> statesOptions = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Telangana",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+  ];
 
-  final DropDownController ddCtrl = Get.put(DropDownController());
+
+  final DropdownController genderController = DropdownController();
+  final DropdownController occupationController = DropdownController();
+  final DropdownController stateController = DropdownController();
 
   RegistrationScreen({super.key});
 
@@ -30,44 +65,220 @@ class RegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      appBar:PreferredSize(preferredSize:const Size.fromHeight(75.0),
-      child:AppBar(
-        elevation: 0,
-        title:const Padding(
-          padding: EdgeInsets.only(top:28.0),
-          child: TextWidget(title: AppString.regTitle, textColor: AppColors.primaryText, textFontSize: 24, textFontWeight:FontWeight.w800,textSpace: 0.3,),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(75.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          title: const Padding(
+            padding: EdgeInsets.only(top: 28.0),
+            child: TextWidget(
+              title: AppString.regTitle,
+              textColor: AppColors.primaryText,
+              textFontSize: 24,
+              textFontWeight: FontWeight.w800,
+              textSpace: 0.3,
+            ),
+          ),
+          backgroundColor: AppColors.primaryBackground,
         ),
-        backgroundColor: AppColors.primaryBackground,
-      ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children:<Widget> [
-               const TextWidget(title: AppString.regSec1, textColor:AppColors.blackText, textFontSize: 24, textFontWeight: FontWeight.w500),
-               TextFieldWidget(labelText:AppString.regName , controller:nameCtrl),
-               TextFieldWidget(labelText:AppString.regAge , controller: ageCtrl),
-               Obx( () => DropdownButton(
-                  hint: const Text(
-                  AppString.regGender
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const TextWidget(
+                  title: AppString.regSec1,
+                  textColor: AppColors.blackText,
+                  textFontSize: 24,
+                  textFontWeight: FontWeight.w500),
+              const SizedBox(
+                height: 12.0,
+              ),
+              TextFieldWidget(
+                labelText: AppString.regName,
+                controller: nameCtrl,
+                boxWidth: 375,
+                boxHeight: 60,
+                borderColor: AppColors.cardShadow,
+              ),
+              const SizedBox(
+                height: 12.0,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFieldWidget(
+                    labelText: AppString.regAge,
+                    controller: ageCtrl,
+                    boxHeight: 60,
+                    boxWidth: 180,
+                    borderColor: AppColors.cardShadow,
                   ),
-                  onChanged: (newValue) {
-                    ddCtrl.setSelectedValue(newValue!);
-                  },
-                  value: ddCtrl.selectedValue.value==""?null:ddCtrl.selectedValue.value,
-                  items: genderOptions.map((selectedType) {
-                    return DropdownMenuItem(
-                      value: selectedType,
-                      child:Text(
-                        selectedType,
-                      ),
-                    );
-                  }).toList(),
-                )
-),
-              
-          ],
+                  Padding(
+                    padding: const EdgeInsets.only(right: 2.0, top: 5.0),
+                    child: DropDownWidget(
+                        controller: genderController,
+                        options: genderOptions,
+                        hintText: AppString.regGender,
+                        dropdownHeight: 60,
+                        dropdownWidth: 180),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropDownWidget(
+                  controller: occupationController,
+                  options: occupationOptions,
+                  hintText: 'Select Occupation',
+                  dropdownHeight: 60,
+                  dropdownWidth: double.infinity,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DropDownWidget(
+                  controller: stateController,
+                  options: statesOptions,
+                  hintText: 'Select State',
+                  dropdownHeight: 60,
+                  dropdownWidth: double.infinity,
+                ),
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              const TextWidget(
+                  title: AppString.regSec2,
+                  textColor: AppColors.blackText,
+                  textFontSize: 24,
+                  textFontWeight: FontWeight.w500),
+              const SizedBox(height: 15.0),
+              TextFieldWidget(
+                labelText: AppString.regDesp,
+                boxWidth: double.infinity,
+                boxHeight: 150,
+                controller: despCtrl,
+                txtMaxLength: 7,
+                txtMinLine: 5,
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 15.0,
+                  ),
+                  Container(
+                    width: 170,
+                    height: 170,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: AppColors.secondaryBackground,
+                    ),
+                    child: const Center(
+                        child: TextWidget(
+                            title: "Disabillity Photo's",
+                            textColor: AppColors.secondaryText,
+                            textFontSize: 16,
+                            textFontWeight: FontWeight.w400)),
+                  ),
+                  const SizedBox(
+                    width: 15.0,
+                  ),
+                  Container(
+                    width: 170,
+                    height: 170,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: AppColors.secondaryBackground,
+                    ),
+                    child: const Center(
+                        child: TextWidget(
+                            title: "Disabillity Photo's",
+                            textColor: AppColors.secondaryText,
+                            textFontSize: 16,
+                            textFontWeight: FontWeight.w400)),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              const TextWidget(
+                  title: AppString.regSec3,
+                  textColor: AppColors.blackText,
+                  textFontSize: 24,
+                  textFontWeight: FontWeight.w500),
+              const SizedBox(
+                height: 2.0,
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: TextWidget(
+                    title: AppString.regDocType,
+                    textColor: AppColors.blackText,
+                    textFontSize: 18,
+                    textFontWeight: FontWeight.w500),
+              ),
+              TextFieldWidget(
+                  labelText: AppString.regDocTitle,
+                  boxWidth: 375,
+                  boxHeight: 60,
+                  controller: docCtrl,
+                  ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Center(
+                child: Container(
+                  width: 170,
+                  height: 170,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: AppColors.secondaryBackground,
+                  ),
+                  child: const Center(
+                      child: TextWidget(
+                          title: AppString.regDocImg,
+                          textColor: AppColors.secondaryText,
+                          textFontSize: 16,
+                          textFontWeight: FontWeight.w400)),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),
+                  child: ButtonWidget(
+                      btnWidth: 140,
+                      btnBorderRadius: 60,
+                      btnColor: AppColors.primaryText,
+                      btnBorderColor: AppColors.secondaryBackground,
+                      btnTextColor: AppColors.secondaryBackground,
+                      btnTextFontSize: 16.0,
+                      onChanged: () {
+                        Get.to(
+                          SignInScreen(),
+                        );
+                      },
+                      title: AppString.regBtnTxt,
+                      btnHeight: 44),
+                ),
+              )
+            ],
+          ),
         ),
-        ),
+      ),
     );
   }
 }

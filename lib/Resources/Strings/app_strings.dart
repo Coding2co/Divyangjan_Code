@@ -7,7 +7,10 @@ class AppString{
   static const String alreadyAccount = "Already have an account?  ";
   static const String signinNow = "Sign In here";
   static const String signupBtnTitle = "Create Account";
-
+  
+  static const String passwd = "Password";
+  static const String confirmPasswd = "Confirm Password";
+  static const String phoneNo = "Phone Number";
   static const String usrsubTitle = "Let's get started by filling out the form below.";
 
   //SignIn_Screen
@@ -39,8 +42,27 @@ class AppString{
   static const String imgTxt = "Please Upload your disability Photoes";
   //documents
   static const String regSec3 = "Upload Documents ";
-  static const String regDocType = "Disability Card Details ";
+  static const String regDocType = "1. Disability Card Details ";
   static const String regDocTitle = "Enter your UDID Number";
+  static const String regDocImg = "UDID Card Photo";
   static const String regBtnTxt = "Submit";
+
+ //HomeScreen
+  static const String homeCate  = "Categories";
+  static const String homeCamp = "Campagins";
+
+  //campagins
+  static const String campCity = "Viskhapatnam,Andhra Pradesh";
+  static const String campAdd = "2-44/4, Steel plant at AMTZ ";
+  static const String onGoing = "Ongoing";
+  static const String upCome = "UpComing";
+  static const String complete = "Completed";
+  static const String enroll = "Enroll";
+  static const String close = "Closed";
+  static const String onstatus = "Inprocess";
+  static const String dueTime = "Due:";
+  static const String date = "27-03-2024";
+  
+  
 
 }

@@ -1,9 +1,9 @@
-
-import 'package:divyangjan_frontend/Resources/Colors/appColors.dart';
-import 'package:divyangjan_frontend/Resources/Strings/appString.dart';
+import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
+import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
+import 'package:divyangjan_frontend/screens/home_screens.dart';
 import 'package:divyangjan_frontend/screens/signup_screen.dart';
-import 'package:divyangjan_frontend/screens/verify_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
+import 'package:divyangjan_frontend/widgets/password_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +12,8 @@ import 'package:get/get.dart';
 class SignInScreen extends StatelessWidget {
   final TextEditingController passwdCtrl = TextEditingController();
   final TextEditingController txtCtrl = TextEditingController();
+
+ 
 
   SignInScreen({super.key});
 
@@ -49,16 +51,22 @@ class SignInScreen extends StatelessWidget {
                   height: 15.0,
                 ),
                 TextFieldWidget(
-                    labelText: 'Phone Number',
-                    controller: txtCtrl ,
-                    ),
+                  labelText: 'Phone Number',
+                  controller: txtCtrl,
+                  boxWidth: 375.0,
+                  boxHeight: 60.0,
+                ),
                 const SizedBox(
                   height: 10.0,
                 ),
-                TextFieldWidget(
-                  labelText: 'Password',
-                  controller: passwdCtrl
-                ),
+               PassworddWidget(
+                    labelText: AppString.passwd, 
+                    boxWidth: 375.0, 
+                    boxHeight: 60, 
+                    controller: passwdCtrl, 
+                    obsecureStatus: true
+                    ),
+                
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -74,7 +82,7 @@ class SignInScreen extends StatelessWidget {
                   btnTextFontWeight: FontWeight.w700,
                   title: AppString.signinBtnTitle,
                   onChanged: () {
-                    Get.to(const PhoneVerify());
+                    Get.to(() => const HomeScreens());
                   },
                   btnTextColor: Colors.white,
                 ),

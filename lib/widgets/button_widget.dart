@@ -1,9 +1,12 @@
+// ignore_for_file: use_key_in_widget_constructors
 
+import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
+import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String title;
-  final Function () onChanged;
+  final Function onChanged;
   final double btnWidth;
   final double btnHeight;
   final double btnBorderRadius;
@@ -12,29 +15,48 @@ class ButtonWidget extends StatelessWidget {
   final FontWeight? btnTextFontWeight;
   final double? btnTextFontSize;
   final double? btnTxtSpace;
-  const ButtonWidget({super.key,required this.btnWidth,required this.btnBorderRadius,required this.btnColor,required this.onChanged,required this.title,this.btnTextColor,this.btnTextFontWeight,this.btnTextFontSize,required this.btnHeight,this.btnTxtSpace});
+  final Color? btnBorderColor;
+
+  const ButtonWidget({
+    Key? key,
+    required this.btnWidth,
+    required this.btnHeight,
+    required this.btnBorderRadius,
+    required this.btnColor,
+    required this.onChanged,
+    required this.title,
+    this.btnTextColor,
+    this.btnTextFontWeight,
+    this.btnTextFontSize,
+    this.btnTxtSpace,
+    this.btnBorderColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width:btnWidth,
-      height: 50,
-      child: ElevatedButton(onPressed: (){
-        onChanged;
-      }, 
-      style:ButtonStyle(
-                // padding: MaterialStateProperty.all<EdgeInsets>(
-                //    const EdgeInsets.symmetric(horizontal: 130.0, vertical: 20.0)),
-                backgroundColor: MaterialStateProperty.all<Color>(btnColor),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(btnBorderRadius),
-                        // side: const BorderSide(color: null, width:2.5),
-                        //  side: const BorderSide(color: null, width:2.5),
-                       ),),
-              ),
-      child:Text(title,style: TextStyle(color :btnTextColor ,
-      fontSize: btnTextFontSize,fontWeight: btnTextFontWeight,letterSpacing: btnTxtSpace),),
+      width: btnWidth,
+      height: btnHeight,
+      child: ElevatedButton(
+        onPressed: () {
+          onChanged(); 
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(btnColor),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(btnBorderRadius),
+                side: BorderSide(
+                  color: btnBorderColor ?? Colors.transparent,
+                  width: 3.0,
+                )),
+          ),
+        ),
+        child: TextWidget(
+            title: title,
+            textColor: btnTextColor ?? AppColors.secondaryText,
+            textFontSize: btnTextFontSize ?? 16.0,
+            textFontWeight: btnTextFontWeight ?? FontWeight.normal),
       ),
     );
   }

@@ -1,24 +1,31 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
+import 'package:divyangjan_frontend/controllers/password_controller.dart';
+import 'package:divyangjan_frontend/controllers/phonenumber_controller.dart';
+import 'package:divyangjan_frontend/controllers/validation_controller.dart';
 import 'package:divyangjan_frontend/screens/signin_screen.dart';
 import 'package:divyangjan_frontend/screens/verify_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
 import 'package:divyangjan_frontend/widgets/password_widget.dart';
+import 'package:divyangjan_frontend/widgets/phonenumber_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
-import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
-
-
   final TextEditingController phoneNumberCtrl = TextEditingController();
   final TextEditingController passwordCtrl = TextEditingController();
   final TextEditingController confirmPasswdCtrl = TextEditingController();
 
-   SignUpScreen({super.key});
-   
-    
+  final PhoneNumberController phoneNumberController = Get.put(PhoneNumberController());
+
+  final PasswordController passwordController = Get.put(PasswordController());
+  final PasswordController confirmPasswordController = Get.put(PasswordController());
+  final ValidationController validator = Get.put(ValidationController());
+
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,38 +60,34 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15.0,
                 ),
-                TextFieldWidget(
-                  labelText: 'Phone Number',
-                  controller: phoneNumberCtrl,
-                  boxWidth: 375.0,
-                  boxHeight: 90.0,
-                  // txtErrorMsg: phoneNumberCtrl
-                  //     .validatePhoneNumber(controller.phoneCtrl.text),
-                  // onChanged: phoneNumberCtrl.setPhoneNumber,
-                ),
-               
-                   PassworddWidget(
-                    labelText: AppString.passwd, 
-                    boxWidth: 375.0, 
-                    boxHeight: 60, 
-                    controller: passwordCtrl, 
-                    obsecureStatus: true
-                    ),
-                
-                
-                const SizedBox(
-                  height: 10.0,
-                ),
-          
+
+              PhoneNumberWidget(
+                labelText: AppString.phoneNo, 
+                boxWidth: 375, 
+                boxHeight: 60,
+                 controller: phoneNumberCtrl, 
+                 phoneNumberController: phoneNumberController
+                 ),
+
                 PassworddWidget(
-                    labelText: AppString.passwd, 
-                    boxWidth: 375.0, 
-                    boxHeight: 60, 
-                    controller: confirmPasswdCtrl, 
-                    obsecureStatus: true
-                    ),
-                
-              
+                  labelText: AppString.passwd,
+                  boxWidth: 375.0,
+                  boxHeight: 60,
+                  controller: passwordCtrl,
+                  passwordController: passwordController, 
+   
+                ),
+                // const SizedBox(
+                //   height: 10.0,
+                // ),
+                PassworddWidget(
+                  labelText: AppString.confirmPasswd,
+                  boxWidth: 375.0,
+                  boxHeight: 60,
+                  controller: confirmPasswdCtrl, 
+                  passwordController: confirmPasswordController,
+ 
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -97,7 +100,13 @@ class SignUpScreen extends StatelessWidget {
                   btnTextFontWeight: FontWeight.w600,
                   title: AppString.signupBtnTitle,
                   onChanged: () {
-                    Get.to(() => const PhoneVerify());
+                    String phoneNumber = phoneNumberCtrl.text.trim();
+                    String password = passwordCtrl.text.trim();
+                    String confirmPasword = confirmPasswdCtrl.text.trim();
+                    if( validator.validateData(phoneNumber, password, confirmPassword: confirmPasword) ){
+                     Get.to(() => const PhoneVerify()); 
+                    }
+                                
                   },
                   btnTextColor: Colors.white,
                 ),
@@ -117,6 +126,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
+                       
                         Get.to(() => SignInScreen());
                       },
                       child: const Text(

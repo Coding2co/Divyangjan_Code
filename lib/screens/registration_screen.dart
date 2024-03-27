@@ -21,7 +21,8 @@ class RegistrationScreen extends StatelessWidget {
     "Public Sector",
     "Private Sector",
     "Self-Empolyed",
-    "Unempolyed,Farmer"
+    "Unempolyed",
+    "Farmer",
   ];
   final List<String> statesOptions = [
     "Andhra Pradesh",
@@ -214,48 +215,51 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              const TextWidget(
-                  title: AppString.regSec3,
-                  textColor: AppColors.blackText,
-                  textFontSize: 24,
-                  textFontWeight: FontWeight.w500),
-              const SizedBox(
-                height: 2.0,
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: TextWidget(
-                    title: AppString.regDocType,
-                    textColor: AppColors.blackText,
-                    textFontSize: 18,
-                    textFontWeight: FontWeight.w500),
-              ),
-              TextFieldWidget(
-                  labelText: AppString.regDocTitle,
-                  boxWidth: 375,
-                  boxHeight: 60,
-                  controller: docCtrl,
-                  ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              Center(
-                child: Container(
-                  width: 170,
-                  height: 170,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    color: AppColors.secondaryBackground,
-                  ),
-                  child: const Center(
-                      child: TextWidget(
-                          title: AppString.regDocImg,
-                          textColor: AppColors.secondaryText,
-                          textFontSize: 16,
-                          textFontWeight: FontWeight.w400)),
-                ),
-              ),
+              
+  // Documentation Details
+
+              // const TextWidget(
+              //     title: AppString.regSec3,
+              //     textColor: AppColors.blackText,
+              //     textFontSize: 24,
+              //     textFontWeight: FontWeight.w500),
+              // const SizedBox(
+              //   height: 2.0,
+              // ),
+              // const Padding(
+              //   padding: EdgeInsets.all(8.0),
+              //   child: TextWidget(
+              //       title: AppString.regDocType,
+              //       textColor: AppColors.blackText,
+              //       textFontSize: 18,
+              //       textFontWeight: FontWeight.w500),
+              // ),
+              // TextFieldWidget(
+              //     labelText: AppString.regDocTitle,
+              //     boxWidth: 375,
+              //     boxHeight: 60,
+              //     controller: docCtrl,
+              //     ),
+              // const SizedBox(
+              //   height: 15.0,
+              // ),
+              // Center(
+              //   child: Container(
+              //     width: 170,
+              //     height: 170,
+              //     padding: const EdgeInsets.all(20),
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(12.0),
+              //       color: AppColors.secondaryBackground,
+              //     ),
+              //     child: const Center(
+              //         child: TextWidget(
+              //             title: AppString.regDocImg,
+              //             textColor: AppColors.secondaryText,
+              //             textFontSize: 16,
+              //             textFontWeight: FontWeight.w400)),
+              //   ),
+              // ),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),

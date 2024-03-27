@@ -1,6 +1,8 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
-import 'package:divyangjan_frontend/screens/home_screens.dart';
+import 'package:divyangjan_frontend/controllers/password_controller.dart';
+import 'package:divyangjan_frontend/controllers/validation_controller.dart';
+import 'package:divyangjan_frontend/screens/navigation_screen.dart';
 import 'package:divyangjan_frontend/screens/signup_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
 import 'package:divyangjan_frontend/widgets/password_widget.dart';
@@ -13,7 +15,8 @@ class SignInScreen extends StatelessWidget {
   final TextEditingController passwdCtrl = TextEditingController();
   final TextEditingController txtCtrl = TextEditingController();
 
- 
+  final PasswordController passwordController = PasswordController();
+  final ValidationController validator = Get.put(ValidationController());
 
   SignInScreen({super.key});
 
@@ -59,14 +62,13 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-               PassworddWidget(
-                    labelText: AppString.passwd, 
-                    boxWidth: 375.0, 
-                    boxHeight: 60, 
-                    controller: passwdCtrl, 
-                    obsecureStatus: true
-                    ),
-                
+                PassworddWidget(
+                  labelText: AppString.passwd,
+                  boxWidth: 375.0,
+                  boxHeight: 60,
+                  controller: passwdCtrl,
+                  passwordController: passwordController,
+                ),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -82,7 +84,13 @@ class SignInScreen extends StatelessWidget {
                   btnTextFontWeight: FontWeight.w700,
                   title: AppString.signinBtnTitle,
                   onChanged: () {
-                    Get.to(() => const HomeScreens());
+                    String phoneNumber = txtCtrl.text.trim();
+                    String password = passwdCtrl.text.trim();
+                    
+                    if(validator.validateData(phoneNumber, password) ){
+                      Get.to(() => const NavigationScreen());
+                    }
+                   
                   },
                   btnTextColor: Colors.white,
                 ),

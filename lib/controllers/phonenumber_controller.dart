@@ -1,24 +1,24 @@
-
 import 'package:get/get.dart';
 
 class PhoneNumberController extends GetxController{
 
-  final phoneNumber = ''.obs;
+  final RxString phoneNumber = ''.obs;
+ 
 
-  String? validatePhoneNumber(String value){
+  String validatePhoneNumber(String value){
+    // final RegExp regex= RegExp();
+    // bool isValidate=regex.hasMatch(value);
 
-    if(value.isEmpty){
-      return "smsmms ";
-    }
-    else if(value.length!=10){
-      return "Phone Number must be 10 digit long";
-    }
-    return null; 
+   if(value.isEmpty){
+    return'Please Enter Your Phone Number';
+   }
+ 
+   else if(value.length < 10 ){
+    return  'Phone Number must be 10 digits';
+   }
+
+  return '';
+ 
   }
 
-
-  
-  void setPhoneNumber(String value){
-    phoneNumber.value = value;
-  }
 }

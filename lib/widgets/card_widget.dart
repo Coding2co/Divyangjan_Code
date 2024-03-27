@@ -1,4 +1,5 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
+import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/widgets/status_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
@@ -62,44 +63,70 @@ class CardWidget extends StatelessWidget {
                 thickness: 0.6,
                 color: AppColors.secondaryText,
               ),
+
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    child: Row(
+                   const Column(
+                    children:[
+                           Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: TextWidget(
-                              title: due,
+                         TextWidget(
+                              title:AppString.start,
                               textColor: AppColors.blackText,
                               textFontSize: 16,
-                              textFontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(
+                              textFontWeight: FontWeight.w600,
+                              ),
+                      
+                        SizedBox(
                           width: 10.0,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: TextWidget(
-                              title: date,
-                              textColor: AppColors.primaryText,
-                              textFontSize: 18,
-                              textFontWeight: FontWeight.w800),
-                        ),
+                        TextWidget(
+                            title:AppString.startTime ,
+                            textColor: AppColors.primaryText,
+                            textFontSize: 18,
+                            textFontWeight: FontWeight.w800,
+                            ),
                       ],
                     ),
+                    Row(
+                      children: [
+                         TextWidget(
+                              title:AppString.due,
+                              textColor: AppColors.blackText,
+                              textFontSize: 16,
+                              textFontWeight: FontWeight.w600,
+                              ),
+                      
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        TextWidget(
+                            title:AppString.date ,
+                            textColor: AppColors.primaryText,
+                            textFontSize: 18,
+                            textFontWeight: FontWeight.w800,
+                            ),
+                      ],
+                    )
+                    ] 
+                    
                   ),
+  
                   SizedBox(
                     child: Row(
                       children: [
-                        StatusWidget(
-                            statusTitle: enroll,
-                            cardBgcolor: enrollBgcolor,
-                            cardWidth: 70.0,
-                            cardHeight: 40.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: StatusWidget(
+                              statusTitle: enroll,
+                              cardBgcolor: enrollBgcolor,
+                              cardWidth: 70.0,
+                              cardHeight: 40.0,
+                              ),
+                        ),
                         const SizedBox(
                           width: 20.0,
                         ),
@@ -107,7 +134,8 @@ class CardWidget extends StatelessWidget {
                             statusTitle: status,
                             cardBgcolor: statusBgcolor,
                             cardWidth: 100.0,
-                            cardHeight: 40.0),
+                            cardHeight: 40.0,
+                            ),
                       ],
                     ),
                   ),

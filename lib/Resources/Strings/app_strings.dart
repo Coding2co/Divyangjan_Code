@@ -60,7 +60,9 @@ class AppString{
   static const String enroll = "Enroll";
   static const String close = "Closed";
   static const String onstatus = "Inprocess";
-  static const String dueTime = "Due:";
+  static const String start = "Start:";
+  static const String startTime = "20-03-2024";
+  static const String due = "Due:";
   static const String date = "27-03-2024";
   
   

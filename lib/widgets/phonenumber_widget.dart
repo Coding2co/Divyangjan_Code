@@ -1,65 +1,50 @@
-import 'package:divyangjan_frontend/controllers/phonenumber_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Resources/Colors/app_colors.dart';
+import '../controllers/phonenumber_controller.dart';
 
-
-class TextFieldWidget extends StatelessWidget {
+class PhoneNumberWidget extends StatelessWidget {
   final String labelText;
   final double boxWidth;
   final double boxHeight;
+  final PhoneNumberController phoneNumberController;
+  final TextEditingController controller;
   final Icon? icon;
-  final int? txtMaxLine;
-  final int? txtMaxLength;
-  final int? txtMinLine;
   final String? txtErrorMsg;
   final Color? borderColor;
-  final Function? onChanged;
+  final Function(String)? onChanged;
+  final String? errorText;
 
+  const PhoneNumberWidget(
+    {super.key,
+    required this.labelText,
+    required this.boxWidth,
+    required this.boxHeight,
+    required this.controller,
+    required this.phoneNumberController,
+     this.icon, 
+     this.txtErrorMsg, 
+     this.borderColor, 
+     this.onChanged,
+     this.errorText
+  });
 
-  final TextEditingController controller;
-   
-
-  const TextFieldWidget(
-      {super.key,
-      required this.labelText,
-      required this.boxWidth,
-      required this.boxHeight,
-      required this.controller,
-      this.onChanged, // passwordCtrl.showPassword();
-      this.icon,
-      this.txtMaxLength,
-      this.txtMaxLine,
-      this.txtMinLine,
-      this.txtErrorMsg,
-      this.borderColor,
-      
-      
-      });
-
-      
   @override
   Widget build(BuildContext context) {
-    return
-    // Obx(() => 
-    Padding(
+    return  Padding(
       padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 5.0),
       child: SizedBox(
         width:boxWidth,  //375
         height:boxHeight,  //60
-        child: TextFormField(
+        child: 
+       TextFormField(
           keyboardType:TextInputType.phone ,
-          maxLength: txtMaxLength ?? 50,
-          maxLines: txtMaxLine,
-          minLines: txtMinLine,
           controller: controller,
-          onChanged:(value){
-
-          } ,
-          
+          onChanged:onChanged,
+          validator: (value) => phoneNumberController.validatePhoneNumber(value ?? ""),
           decoration:InputDecoration(
             alignLabelWithHint: true,
-            errorText: txtErrorMsg,
+            // errorText:errorText,
             errorStyle: const TextStyle(
               height: 0.0,
             ),
@@ -92,6 +77,7 @@ class TextFieldWidget extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+            
             ),
           ),
           style:const TextStyle(
@@ -101,13 +87,8 @@ class TextFieldWidget extends StatelessWidget {
             // background: Paint()..color = AppColors.primaryBackground,
           ),    
         ),
-      ),
-    );
-    
-    // );
-    
-    
-     
-    
+        
+        ),
+      );
   }
 }

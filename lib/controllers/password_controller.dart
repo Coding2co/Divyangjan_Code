@@ -1,11 +1,19 @@
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PasswordController extends GetxController{
+class PasswordController extends GetxController {
+  final RxMap passwordVisibility = {}.obs;
 
-  final RxBool isShow = false.obs;
+  void togglePasswordVisibility(TextEditingController controller) {
+    if (passwordVisibility.containsKey(controller)) {
+      passwordVisibility[controller] = !passwordVisibility[controller]!;
+    } else {
+      passwordVisibility[controller] = true;
+    }
+    update();
+  }
 
-  void showPassword(){
-      isShow.value = !isShow.value;
+  bool isPasswordVisible(TextEditingController controller) {
+    return passwordVisibility[controller] ?? true;
   }
 }

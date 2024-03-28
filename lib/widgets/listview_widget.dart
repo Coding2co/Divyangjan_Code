@@ -22,7 +22,9 @@ class ListViewWidget extends StatelessWidget {
             enrollBgcolor: AppColors.secondaryText,
             status: AppString.onGoing,
             statusBgcolor: AppColors.onGoingColor,
-            due: AppString.due,
+            due: AppString.due, 
+            startDate:AppString.startTime, 
+            start:AppString.start,
           );
         } else if (tabIndex == 1) {
           return const CardWidget(
@@ -33,7 +35,9 @@ class ListViewWidget extends StatelessWidget {
             enrollBgcolor: AppColors.primaryText,
             status: AppString.upCome,
             statusBgcolor: AppColors.upComingColor,
-            due: AppString.due,
+            due: AppString.due, 
+            startDate:AppString.startTime, 
+            start:AppString.start,
           );
         } else if (tabIndex == 2) {
           return const CardWidget(
@@ -45,6 +49,8 @@ class ListViewWidget extends StatelessWidget {
             status: AppString.complete,
             statusBgcolor: AppColors.completedColor,
             due: AppString.due,
+             startDate:AppString.start, 
+             start:AppString.start,
           );
         }
         return Container(); // Return a container for any other cases

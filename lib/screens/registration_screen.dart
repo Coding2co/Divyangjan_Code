@@ -4,6 +4,7 @@ import 'package:divyangjan_frontend/controllers/dropdown_Controller.dart';
 import 'package:divyangjan_frontend/screens/signin_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
 import 'package:divyangjan_frontend/widgets/dropDown_widget.dart';
+import 'package:divyangjan_frontend/widgets/imagepicker_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -155,6 +156,9 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
+                
+                //Section : Disability
+
               const TextWidget(
                   title: AppString.regSec2,
                   textColor: AppColors.blackText,
@@ -172,50 +176,88 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              Row(
+              const Row(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     width: 15.0,
                   ),
-                  Container(
-                    width: 170,
-                    height: 170,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: AppColors.secondaryBackground,
-                    ),
-                    child: const Center(
-                        child: TextWidget(
-                            title: "Disabillity Photo's",
-                            textColor: AppColors.secondaryText,
-                            textFontSize: 16,
-                            textFontWeight: FontWeight.w400)),
-                  ),
-                  const SizedBox(
+
+                  // 
+          
+                  ImagePickerWidget(),
+                  SizedBox(width: 8.0,),
+                  ImagePickerWidget(),
+                  SizedBox(width: 8.0,),
+                  ImagePickerWidget(),
+             
+
+                  SizedBox(
                     width: 15.0,
                   ),
-                  Container(
-                    width: 170,
-                    height: 170,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: AppColors.secondaryBackground,
-                    ),
-                    child: const Center(
-                        child: TextWidget(
-                            title: "Disabillity Photo's",
-                            textColor: AppColors.secondaryText,
-                            textFontSize: 16,
-                            textFontWeight: FontWeight.w400)),
-                  ),
+  
                 ],
               ),
               const SizedBox(
                 height: 15.0,
               ),
               
+
+
+              // Submit Button
+
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),
+                  child: ButtonWidget(
+                      btnWidth: 140,
+                      btnBorderRadius: 60,
+                      btnColor: AppColors.primaryText,
+                      btnBorderColor: AppColors.secondaryBackground,
+                      btnTextColor: AppColors.secondaryBackground,
+                      btnTextFontSize: 16.0,
+                      onChanged: () {
+                        Get.to(
+                         ()=> SignInScreen());
+                      },
+                      title: AppString.regBtnTxt,
+                      btnHeight: 44),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // Documentation Details
 
               // const TextWidget(
@@ -260,29 +302,3 @@ class RegistrationScreen extends StatelessWidget {
               //             textFontWeight: FontWeight.w400)),
               //   ),
               // ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),
-                  child: ButtonWidget(
-                      btnWidth: 140,
-                      btnBorderRadius: 60,
-                      btnColor: AppColors.primaryText,
-                      btnBorderColor: AppColors.secondaryBackground,
-                      btnTextColor: AppColors.secondaryBackground,
-                      btnTextFontSize: 16.0,
-                      onChanged: () {
-                        Get.to(
-                          SignInScreen(),
-                        );
-                      },
-                      title: AppString.regBtnTxt,
-                      btnHeight: 44),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

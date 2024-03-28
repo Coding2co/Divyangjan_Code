@@ -39,7 +39,7 @@ class AppString{
  //disability
   static const String regSec2 = "Disability Details";
   static const String regDesp = "Short Description  about your disability..";
-  static const String imgTxt = "Please Upload your disability Photoes";
+  static const String imgTxt = "Upload disability Photoes";
   //documents
   static const String regSec3 = "Upload Documents ";
   static const String regDocType = "1. Disability Card Details ";
@@ -65,6 +65,12 @@ class AppString{
   static const String due = "Due:";
   static const String date = "27-03-2024";
   
-  
+  //History
+
+  static const String history = "History";
+  static const String on = 'on:';
+  static const String status = 'Enrolled';
+  static const String view = 'View';
+  static const String regDate = '18-03-2024';
 
 }

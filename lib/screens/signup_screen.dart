@@ -3,7 +3,6 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/controllers/password_controller.dart';
-import 'package:divyangjan_frontend/controllers/phonenumber_controller.dart';
 import 'package:divyangjan_frontend/controllers/validation_controller.dart';
 import 'package:divyangjan_frontend/screens/signin_screen.dart';
 import 'package:divyangjan_frontend/screens/verify_screen.dart';
@@ -19,7 +18,7 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController passwordCtrl = TextEditingController();
   final TextEditingController confirmPasswdCtrl = TextEditingController();
 
-  final PhoneNumberController phoneNumberController = Get.put(PhoneNumberController());
+
 
   final PasswordController passwordController = Get.put(PasswordController());
   final PasswordController confirmPasswordController = Get.put(PasswordController());
@@ -66,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                 boxWidth: 375, 
                 boxHeight: 60,
                  controller: phoneNumberCtrl, 
-                 phoneNumberController: phoneNumberController
+      
                  ),
 
                 PassworddWidget(
@@ -103,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                     String phoneNumber = phoneNumberCtrl.text.trim();
                     String password = passwordCtrl.text.trim();
                     String confirmPasword = confirmPasswdCtrl.text.trim();
-                    if( validator.validateData(phoneNumber, password, confirmPassword: confirmPasword) ){
+                    if( validator.validateData(phoneNumber, password,confirmPasword) ){
                      Get.to(() => const PhoneVerify()); 
                     }
                                 

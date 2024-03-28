@@ -1,7 +1,7 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/controllers/password_controller.dart';
-import 'package:divyangjan_frontend/controllers/validation_controller.dart';
+import 'package:divyangjan_frontend/controllers/sigin_validator_controller.dart';
 import 'package:divyangjan_frontend/screens/navigation_screen.dart';
 import 'package:divyangjan_frontend/screens/signup_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
@@ -16,7 +16,7 @@ class SignInScreen extends StatelessWidget {
   final TextEditingController txtCtrl = TextEditingController();
 
   final PasswordController passwordController = PasswordController();
-  final ValidationController validator = Get.put(ValidationController());
+  final SigninValidator validator = Get.put(SigninValidator());
 
   SignInScreen({super.key});
 
@@ -87,7 +87,7 @@ class SignInScreen extends StatelessWidget {
                     String phoneNumber = txtCtrl.text.trim();
                     String password = passwdCtrl.text.trim();
                     
-                    if(validator.validateData(phoneNumber, password) ){
+                    if(validator.validateCandidateData(phoneNumber, password) ){
                       Get.to(() => const NavigationScreen());
                     }
                    

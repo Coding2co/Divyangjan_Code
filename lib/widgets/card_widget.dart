@@ -7,23 +7,29 @@ import 'package:flutter/material.dart';
 class CardWidget extends StatelessWidget {
   final String campCity;
   final String campAdd;
-  final String enroll;
-  final String status;
-  final String date;
   final String due;
-  final Color enrollBgcolor;
+  final String date;
+  final String status;
   final Color statusBgcolor;
+  final String start;
+  final String startDate;
+  final String enroll;
+  final Color enrollBgcolor;
+ 
 
   const CardWidget({
     super.key,
     required this.campCity,
     required this.campAdd,
-    required this.date,
-    required this.enroll,
-    required this.enrollBgcolor,
     required this.status,
-    required this.statusBgcolor,
     required this.due,
+    required this.date,
+    required this.statusBgcolor,
+    required this.enroll,
+    required this.startDate,
+    required this.start,
+    required this.enrollBgcolor, 
+    
   });
 
   @override
@@ -68,23 +74,23 @@ class CardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                   const Column(
+                    Column(
                     children:[
                            Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                         TextWidget(
-                              title:AppString.start,
+                        TextWidget(
+                              title:start ?? '',
                               textColor: AppColors.blackText,
                               textFontSize: 16,
                               textFontWeight: FontWeight.w600,
                               ),
                       
-                        SizedBox(
+                        const SizedBox(
                           width: 10.0,
                         ),
                         TextWidget(
-                            title:AppString.startTime ,
+                            title:startDate?? '',
                             textColor: AppColors.primaryText,
                             textFontSize: 18,
                             textFontWeight: FontWeight.w800,
@@ -94,17 +100,17 @@ class CardWidget extends StatelessWidget {
                     Row(
                       children: [
                          TextWidget(
-                              title:AppString.due,
+                              title:due,
                               textColor: AppColors.blackText,
                               textFontSize: 16,
                               textFontWeight: FontWeight.w600,
                               ),
                       
-                        SizedBox(
+                        const SizedBox(
                           width: 10.0,
                         ),
                         TextWidget(
-                            title:AppString.date ,
+                            title:date ,
                             textColor: AppColors.primaryText,
                             textFontSize: 18,
                             textFontWeight: FontWeight.w800,
@@ -121,14 +127,14 @@ class CardWidget extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: StatusWidget(
-                              statusTitle: enroll,
-                              cardBgcolor: enrollBgcolor,
+                              statusTitle: enroll ?? '',
+                              cardBgcolor: enrollBgcolor ?? AppColors.secondaryBackground,
                               cardWidth: 70.0,
                               cardHeight: 40.0,
                               ),
                         ),
                         const SizedBox(
-                          width: 20.0,
+                          width: 15.0,
                         ),
                         StatusWidget(
                             statusTitle: status,

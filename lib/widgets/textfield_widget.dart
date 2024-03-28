@@ -1,8 +1,5 @@
-import 'package:divyangjan_frontend/controllers/phonenumber_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../Resources/Colors/app_colors.dart';
-
 
 class TextFieldWidget extends StatelessWidget {
   final String labelText;
@@ -16,48 +13,40 @@ class TextFieldWidget extends StatelessWidget {
   final Color? borderColor;
   final Function? onChanged;
 
-
   final TextEditingController controller;
-   
 
-  const TextFieldWidget(
-      {super.key,
-      required this.labelText,
-      required this.boxWidth,
-      required this.boxHeight,
-      required this.controller,
-      this.onChanged, // passwordCtrl.showPassword();
-      this.icon,
-      this.txtMaxLength,
-      this.txtMaxLine,
-      this.txtMinLine,
-      this.txtErrorMsg,
-      this.borderColor,
-      
-      
-      });
+  const TextFieldWidget({
+    super.key,
+    required this.labelText,
+    required this.boxWidth,
+    required this.boxHeight,
+    required this.controller,
+    this.onChanged, // passwordCtrl.showPassword();
+    this.icon,
+    this.txtMaxLength,
+    this.txtMaxLine,
+    this.txtMinLine,
+    this.txtErrorMsg,
+    this.borderColor,
+  });
 
-      
   @override
   Widget build(BuildContext context) {
     return
-    // Obx(() => 
-    Padding(
-      padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 5.0),
+        // Obx(() =>
+        Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
       child: SizedBox(
-        width:boxWidth,  //375
-        height:boxHeight,  //60
+        width: boxWidth, //375
+        height: boxHeight, //60
         child: TextFormField(
-          keyboardType:TextInputType.phone ,
+          keyboardType: TextInputType.phone,
           maxLength: txtMaxLength ?? 50,
           maxLines: txtMaxLine,
           minLines: txtMinLine,
           controller: controller,
-          onChanged:(value){
-
-          } ,
-          
-          decoration:InputDecoration(
+          onChanged: (value) {},
+          decoration: InputDecoration(
             alignLabelWithHint: true,
             errorText: txtErrorMsg,
             errorStyle: const TextStyle(
@@ -67,7 +56,7 @@ class TextFieldWidget extends StatelessWidget {
             fillColor: AppColors.primaryBackground,
             counterText: '',
             // hoverColor: Colors.blue,
-            labelStyle:const TextStyle(
+            labelStyle: const TextStyle(
               fontSize: 17.0,
               color: Colors.blue,
             ),
@@ -87,27 +76,23 @@ class TextFieldWidget extends StatelessWidget {
                 style: BorderStyle.solid,
                 width: 2.0,
               ),
-              borderRadius: BorderRadius.circular(10.0),        
+              borderRadius: BorderRadius.circular(10.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.blue, width: 2.0),
             ),
           ),
-          style:const TextStyle(
+          style: const TextStyle(
             fontSize: 14.0,
             color: Colors.black,
             fontWeight: FontWeight.w400,
             // background: Paint()..color = AppColors.primaryBackground,
-          ),    
+          ),
         ),
       ),
     );
-    
+
     // );
-    
-    
-     
-    
   }
 }

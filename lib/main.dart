@@ -1,3 +1,6 @@
+import 'package:divyangjan_frontend/screens/history_screen.dart';
+import 'package:divyangjan_frontend/screens/home_screens.dart';
+import 'package:divyangjan_frontend/screens/registration_screen.dart';
 import 'package:divyangjan_frontend/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,10 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         themeMode: ThemeMode.system,
-        home: SignUpScreen());
+        home: RegistrationScreen());
   }
 }

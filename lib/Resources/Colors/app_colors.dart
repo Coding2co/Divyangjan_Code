@@ -11,6 +11,7 @@ static const Color cardShadow =  Color.fromARGB(255, 149, 162, 173);
 static const Color onGoingColor =  Color(0xFFFFBF00);
 static const Color upComingColor = Color(0xF7846358);
 static const Color completedColor =  Color(0xFF046A38);
+static const Color enrolledColor =Color(0xFF90EE90);
 
 
 }

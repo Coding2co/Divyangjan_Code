@@ -10,5 +10,4 @@ class BottomNavigationBarController extends GetxController{
     selectedIndex.value = index;
   }
 
-
 }

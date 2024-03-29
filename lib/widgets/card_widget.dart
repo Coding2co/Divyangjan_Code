@@ -77,10 +77,10 @@ class CardWidget extends StatelessWidget {
                     Column(
                     children:[
                            Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextWidget(
-                              title:start ?? '',
+                              title:start,
                               textColor: AppColors.blackText,
                               textFontSize: 16,
                               textFontWeight: FontWeight.w600,
@@ -90,7 +90,7 @@ class CardWidget extends StatelessWidget {
                           width: 10.0,
                         ),
                         TextWidget(
-                            title:startDate?? '',
+                            title:startDate,
                             textColor: AppColors.primaryText,
                             textFontSize: 18,
                             textFontWeight: FontWeight.w800,
@@ -125,16 +125,16 @@ class CardWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(3.0),
                           child: StatusWidget(
-                              statusTitle: enroll ?? '',
-                              cardBgcolor: enrollBgcolor ?? AppColors.secondaryBackground,
+                              statusTitle: enroll,
+                              cardBgcolor: enrollBgcolor,
                               cardWidth: 70.0,
                               cardHeight: 40.0,
                               ),
                         ),
                         const SizedBox(
-                          width: 15.0,
+                          // width: 2.0,
                         ),
                         StatusWidget(
                             statusTitle: status,

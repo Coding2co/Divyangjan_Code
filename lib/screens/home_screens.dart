@@ -68,6 +68,7 @@ class HomeScreens extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.shortestSide,
+          
                 decoration: const BoxDecoration(
                   color: AppColors.secondaryBackground,
                   borderRadius: BorderRadius.only(

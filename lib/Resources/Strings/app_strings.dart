@@ -37,9 +37,13 @@ class AppString{
   static const String regOccup = "Occupation";
   static const String regState = "State";
  //disability
+  static const String loco = "Locomotive disability?";
   static const String regSec2 = "Disability Details";
   static const String regDesp = "Short Description  about your disability..";
-  static const String imgTxt = "Upload disability Photoes";
+  static const String imgTxt = "Upload disability Photo";
+  static const String cam = "Camera";
+  static const String gallery = "Gallery";
+
   //documents
   static const String regSec3 = "Upload Documents ";
   static const String regDocType = "1. Disability Card Details ";

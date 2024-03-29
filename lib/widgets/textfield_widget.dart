@@ -12,6 +12,9 @@ class TextFieldWidget extends StatelessWidget {
   final String? txtErrorMsg;
   final Color? borderColor;
   final Function? onChanged;
+  final double? txtFontSize;
+  final FontWeight? textFontWeight;
+  final TextInputType? type;
 
   final TextEditingController controller;
 
@@ -28,6 +31,9 @@ class TextFieldWidget extends StatelessWidget {
     this.txtMinLine,
     this.txtErrorMsg,
     this.borderColor,
+    this.textFontWeight,
+    this.txtFontSize,
+    this.type,
   });
 
   @override
@@ -40,7 +46,7 @@ class TextFieldWidget extends StatelessWidget {
         width: boxWidth, //375
         height: boxHeight, //60
         child: TextFormField(
-          keyboardType: TextInputType.phone,
+          keyboardType: type ?? TextInputType.phone,
           maxLength: txtMaxLength ?? 50,
           maxLines: txtMaxLine,
           minLines: txtMinLine,
@@ -83,10 +89,10 @@ class TextFieldWidget extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.blue, width: 2.0),
             ),
           ),
-          style: const TextStyle(
-            fontSize: 14.0,
+          style: TextStyle(
+            fontSize: txtFontSize ?? 14.0,
             color: Colors.black,
-            fontWeight: FontWeight.w400,
+            fontWeight: textFontWeight ?? FontWeight.w400,
             // background: Paint()..color = AppColors.primaryBackground,
           ),
         ),

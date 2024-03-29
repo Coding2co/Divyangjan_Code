@@ -1,7 +1,6 @@
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../Resources/Colors/app_colors.dart';
 
 class ListViewWidget extends StatelessWidget {
@@ -13,6 +12,7 @@ class ListViewWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: 3,
       itemBuilder: (context, index) {
+         
         if (tabIndex == 0) {
           return const CardWidget(
             campCity: AppString.campCity,
@@ -49,8 +49,10 @@ class ListViewWidget extends StatelessWidget {
             status: AppString.complete,
             statusBgcolor: AppColors.completedColor,
             due: AppString.due,
-             startDate:AppString.start, 
-             start:AppString.start,
+            startDate:AppString.startTime, 
+            start:AppString.start,
+           
+             
           );
         }
         return Container(); // Return a container for any other cases

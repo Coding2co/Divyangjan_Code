@@ -1,6 +1,7 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/controllers/dropdown_Controller.dart';
+import 'package:divyangjan_frontend/controllers/imagepicker_controller.dart';
 import 'package:divyangjan_frontend/screens/signin_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
 import 'package:divyangjan_frontend/widgets/dropDown_widget.dart';
@@ -9,6 +10,8 @@ import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../widgets/radiobutton_widget.dart';
 
 class RegistrationScreen extends StatelessWidget {
   final TextEditingController nameCtrl = TextEditingController();
@@ -61,6 +64,10 @@ class RegistrationScreen extends StatelessWidget {
   final DropdownController occupationController = DropdownController();
   final DropdownController stateController = DropdownController();
 
+  final ImagePickerController imagePickerController1 = ImagePickerController();
+  final ImagePickerController imagePickerController2 = ImagePickerController();
+  final ImagePickerController imagePickerController3 = ImagePickerController();
+
   RegistrationScreen({super.key});
 
   @override
@@ -87,7 +94,7 @@ class RegistrationScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -102,31 +109,42 @@ class RegistrationScreen extends StatelessWidget {
               TextFieldWidget(
                 labelText: AppString.regName,
                 controller: nameCtrl,
-                boxWidth: 375,
+                boxWidth: MediaQuery.of(context).size.width,
                 boxHeight: 60,
                 borderColor: AppColors.cardShadow,
+                txtFontSize: 16,
+                textFontWeight: FontWeight.w400,
+                onChanged: (){
+                  Get.back();
+                },
               ),
               const SizedBox(
                 height: 12.0,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextFieldWidget(
                     labelText: AppString.regAge,
                     controller: ageCtrl,
                     boxHeight: 60,
-                    boxWidth: 180,
+                    boxWidth: MediaQuery.of(context).size.width/3,
                     borderColor: AppColors.cardShadow,
+                    txtFontSize: 16.0,
+                    textFontWeight: FontWeight.w400,
+                    
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 2.0, top: 5.0),
+                    padding: const EdgeInsets.only(right: 8.0, top: 5.0),
                     child: DropDownWidget(
                         controller: genderController,
                         options: genderOptions,
                         hintText: AppString.regGender,
                         dropdownHeight: 60,
-                        dropdownWidth: 180),
+                        dropdownWidth: MediaQuery.of(context).size.width/2,
+                   
+                        ),
                   )
                 ],
               ),
@@ -158,53 +176,52 @@ class RegistrationScreen extends StatelessWidget {
               ),
                 
                 //Section : Disability
-
+    
+    
+                 const SizedBox(height: 14.0,),
               const TextWidget(
                   title: AppString.regSec2,
                   textColor: AppColors.blackText,
                   textFontSize: 24,
-                  textFontWeight: FontWeight.w500),
-              const SizedBox(height: 15.0),
+                  textFontWeight: FontWeight.w500,
+                  ),
+    
+                  RadioButtonWidget(),
+    
+              const SizedBox(height: 6.0),
               TextFieldWidget(
                 labelText: AppString.regDesp,
                 boxWidth: double.infinity,
                 boxHeight: 150,
                 controller: despCtrl,
-                txtMaxLength: 7,
+                txtMaxLength: 400,
                 txtMinLine: 5,
+                type: TextInputType.multiline,
+                txtFontSize: 16,
               ),
               const SizedBox(
                 height: 15.0,
               ),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 15.0,
-                  ),
-
-                  // 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
           
-                  ImagePickerWidget(),
-                  SizedBox(width: 8.0,),
-                  ImagePickerWidget(),
-                  SizedBox(width: 8.0,),
-                  ImagePickerWidget(),
-             
-
-                  SizedBox(
-                    width: 15.0,
-                  ),
-  
-                ],
-              ),
+                 ImagePickerWidget(controller: imagePickerController1,),
+    
+                 ImagePickerWidget(controller: imagePickerController2,),
+    
+                 ImagePickerWidget(controller: imagePickerController3,),
+                          
+               ],
+             ),
               const SizedBox(
                 height: 15.0,
               ),
               
-
-
+    
+    
               // Submit Button
-
+    
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),
@@ -249,56 +266,3 @@ class RegistrationScreen extends StatelessWidget {
 
 
 
-
-
-
-
-
-
-
-
-
-  // Documentation Details
-
-              // const TextWidget(
-              //     title: AppString.regSec3,
-              //     textColor: AppColors.blackText,
-              //     textFontSize: 24,
-              //     textFontWeight: FontWeight.w500),
-              // const SizedBox(
-              //   height: 2.0,
-              // ),
-              // const Padding(
-              //   padding: EdgeInsets.all(8.0),
-              //   child: TextWidget(
-              //       title: AppString.regDocType,
-              //       textColor: AppColors.blackText,
-              //       textFontSize: 18,
-              //       textFontWeight: FontWeight.w500),
-              // ),
-              // TextFieldWidget(
-              //     labelText: AppString.regDocTitle,
-              //     boxWidth: 375,
-              //     boxHeight: 60,
-              //     controller: docCtrl,
-              //     ),
-              // const SizedBox(
-              //   height: 15.0,
-              // ),
-              // Center(
-              //   child: Container(
-              //     width: 170,
-              //     height: 170,
-              //     padding: const EdgeInsets.all(20),
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(12.0),
-              //       color: AppColors.secondaryBackground,
-              //     ),
-              //     child: const Center(
-              //         child: TextWidget(
-              //             title: AppString.regDocImg,
-              //             textColor: AppColors.secondaryText,
-              //             textFontSize: 16,
-              //             textFontWeight: FontWeight.w400)),
-              //   ),
-              // ),

@@ -1,5 +1,4 @@
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
-import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/widgets/status_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:flutter/material.dart';

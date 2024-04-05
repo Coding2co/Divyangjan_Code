@@ -1,6 +1,9 @@
+import 'package:divyangjan_frontend/Admin/AdminDashboard/view/dashboard_screen.dart';
 import 'package:divyangjan_frontend/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'Admin/RegisteredCandidates/views/eligibility_screen.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -15,9 +18,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         themeMode: ThemeMode.system,
-        home: RegistrationScreen());
+        getPages: [
+          GetPage(
+            name: '/adminDashboardRouteName',
+            page: () => const AdminDashboard(),
+          ),
+          GetPage(
+            name: '/eligibilityScreenRoute',
+            page: () => const EligibilityScreen(),
+          ),
+          GetPage(
+            name: '/registrationForm',
+            page: (() => RegistrationScreen()),
+          ),
+        ],
+        home: const AdminDashboard());
   }
 }

@@ -10,14 +10,15 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-          title,
-          style: TextStyle(
-            color:textColor,
-            fontSize: textFontSize,
-            fontWeight: textFontWeight,
-            letterSpacing: textSpace,
-          ),
+    return  Text(
+            title,
+            style: TextStyle(
+              color:textColor,
+              fontSize: textFontSize,
+              fontWeight: textFontWeight,
+              letterSpacing: textSpace,
+            ),
+      
     );
   }
 }

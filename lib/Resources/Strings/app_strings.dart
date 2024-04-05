@@ -77,4 +77,19 @@ class AppString{
   static const String view = 'View';
   static const String regDate = '18-03-2024';
 
+
+  //Admin Dashboard
+
+  static const String appName = "DIVYANGJAN";
+  static const String adminProfile = "ADMIN";
+  static const String totalReg = "Total Registration";
+  static const String totCamp = "Total Campaigns";
+  static const String totcent = "Total Centers";
+  
+  //Eligibility
+
+  static const String eligibility = "Eligibility";
+  static const String eligibleCandi = "Eligible Candidates";
+  static const String ineligibleCandi = "InEligible Candidates";
+  // static const String view = "View";
 }

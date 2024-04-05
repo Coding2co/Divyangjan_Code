@@ -55,7 +55,6 @@ class ImagePickerWidget extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       debugPrint("button pressed");
-    
                       showModalBottomSheet(
                         context: context,
                         builder: (BuildContext context) {

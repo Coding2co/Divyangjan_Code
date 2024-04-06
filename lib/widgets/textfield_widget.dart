@@ -41,7 +41,7 @@ class TextFieldWidget extends StatelessWidget {
     return
         // Obx(() =>
         Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
       child: SizedBox(
         width: boxWidth, //375
         height: boxHeight, //60
@@ -53,6 +53,7 @@ class TextFieldWidget extends StatelessWidget {
           controller: controller,
           onChanged: (value) {},
           decoration: InputDecoration(
+            prefixIcon: icon,
             alignLabelWithHint: true,
             errorText: txtErrorMsg,
             errorStyle: const TextStyle(

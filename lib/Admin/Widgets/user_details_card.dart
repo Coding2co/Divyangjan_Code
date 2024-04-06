@@ -9,22 +9,25 @@ class UserDetailsCard extends StatelessWidget {
   final String personName;
   final String phoneNumber;
   final Function() onChanged;
-  const UserDetailsCard(
-      {super.key,
-      required this.personName,
-      required this.phoneNumber,
-      required this.onChanged});
+  const UserDetailsCard({
+    super.key,
+    required this.personName,
+    required this.phoneNumber,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
+      elevation: 2,
+      child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: 80,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-        ),
         child: ListTile(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            minVerticalPadding: 10,
             autofocus: false,
             leading: const IconButtonWidget(
               icon: Icon(
@@ -46,23 +49,18 @@ class UserDetailsCard extends StatelessWidget {
                 textFontWeight: FontWeight.normal),
             tileColor: AppColors.primaryBackground,
             trailing: ButtonWidget(
-              btnWidth: MediaQuery.of(context).size.width / 4.5,
-              btnHeight: 43,
+              btnWidth: MediaQuery.of(context).size.width / 4.8,
+              btnHeight: 35,
               btnBorderRadius: 10,
               btnColor: AppColors.primaryText,
               onChanged: onChanged,
               title: AppString.view,
               btnTextColor: AppColors.secondaryBackground,
-              btnTextFontWeight: FontWeight.w600,
+              btnTextFontWeight: FontWeight.w500,
               btnTxtSpace: 0,
+              btnTextFontSize: 14,
             )),
       ),
     );
   }
 }
-
-
-
-
-
-// TextWidget(title: AppString.view, textColor: AppColors.secondaryBackground, textFontSize: 16, textFontWeight: FontWeight.w600),

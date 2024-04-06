@@ -6,21 +6,37 @@ import 'package:divyangjan_frontend/screens/signin_screen.dart';
 import 'package:divyangjan_frontend/widgets/button_widget.dart';
 import 'package:divyangjan_frontend/widgets/dropDown_widget.dart';
 import 'package:divyangjan_frontend/widgets/imagepicker_widget.dart';
+import 'package:divyangjan_frontend/widgets/profile_image_widget.dart';
 import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:divyangjan_frontend/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../widgets/radiobutton_widget.dart';
 
-class RegistrationScreen extends StatelessWidget {
+class RegistrationScreen extends StatefulWidget {
+  final bool isFrom;
+
+  RegistrationScreen({super.key, required this.isFrom});
+
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController nameCtrl = TextEditingController();
+
   final TextEditingController ageCtrl = TextEditingController();
+
   final TextEditingController despCtrl = TextEditingController();
+
   final TextEditingController dropdwnCtrl = TextEditingController();
+
   final TextEditingController docCtrl = TextEditingController();
 
   final List<String> genderOptions = ["Male", "Female", "Others"];
+
   final List<String> occupationOptions = [
     "Public Sector",
     "Private Sector",
@@ -28,6 +44,7 @@ class RegistrationScreen extends StatelessWidget {
     "Unempolyed",
     "Farmer",
   ];
+
   final List<String> statesOptions = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -59,16 +76,13 @@ class RegistrationScreen extends StatelessWidget {
     "West Bengal"
   ];
 
-
   final DropdownController genderController = DropdownController();
+
   final DropdownController occupationController = DropdownController();
+
   final DropdownController stateController = DropdownController();
 
-  final ImagePickerController imagePickerController1 = ImagePickerController();
-  final ImagePickerController imagePickerController2 = ImagePickerController();
-  final ImagePickerController imagePickerController3 = ImagePickerController();
-
-  RegistrationScreen({super.key});
+  final ImagePickerController controller = Get.put(ImagePickerController());
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +120,26 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 12.0,
               ),
+              Obx(
+                () => ProfileImageWidget(
+                  imagePath: controller.imageFile1.value,
+                  onImgRemovedPressed: () {
+                    controller.removeImage1();
+                  },
+                  onPressedCamera: () {
+                    controller.pickImage(ImageSource.camera, 1);
+                  },
+                  onPressedGallery: () {
+                    controller.pickImage(ImageSource.gallery, 1);
+                  },
+                  onPressedBackButton: () {
+                    Get.back();
+                  },
+                ),
+              ),
+               const SizedBox(
+                height: 12.0,
+              ),
               TextFieldWidget(
                 labelText: AppString.regName,
                 controller: nameCtrl,
@@ -114,7 +148,7 @@ class RegistrationScreen extends StatelessWidget {
                 borderColor: AppColors.cardShadow,
                 txtFontSize: 16,
                 textFontWeight: FontWeight.w400,
-                onChanged: (){
+                onChanged: () {
                   Get.back();
                 },
               ),
@@ -129,22 +163,20 @@ class RegistrationScreen extends StatelessWidget {
                     labelText: AppString.regAge,
                     controller: ageCtrl,
                     boxHeight: 60,
-                    boxWidth: MediaQuery.of(context).size.width/3,
+                    boxWidth: MediaQuery.of(context).size.width / 3,
                     borderColor: AppColors.cardShadow,
                     txtFontSize: 16.0,
                     textFontWeight: FontWeight.w400,
-                    
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0, top: 5.0),
                     child: DropDownWidget(
-                        controller: genderController,
-                        options: genderOptions,
-                        hintText: AppString.regGender,
-                        dropdownHeight: 60,
-                        dropdownWidth: MediaQuery.of(context).size.width/2,
-                   
-                        ),
+                      controller: genderController,
+                      options: genderOptions,
+                      hintText: AppString.regGender,
+                      dropdownHeight: 60,
+                      dropdownWidth: MediaQuery.of(context).size.width / 2,
+                    ),
                   )
                 ],
               ),
@@ -174,20 +206,21 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-                
-                //Section : Disability
-    
-    
-                 const SizedBox(height: 14.0,),
+
+              //Section : Disability
+
+              const SizedBox(
+                height: 14.0,
+              ),
               const TextWidget(
-                  title: AppString.regSec2,
-                  textColor: AppColors.blackText,
-                  textFontSize: 24,
-                  textFontWeight: FontWeight.w500,
-                  ),
-    
-                  RadioButtonWidget(),
-    
+                title: AppString.regSec2,
+                textColor: AppColors.blackText,
+                textFontSize: 24,
+                textFontWeight: FontWeight.w500,
+              ),
+
+              RadioButtonWidget(),
+
               const SizedBox(height: 6.0),
               TextFieldWidget(
                 labelText: AppString.regDesp,
@@ -202,26 +235,68 @@ class RegistrationScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-          
-                 ImagePickerWidget(controller: imagePickerController1,),
-    
-                 ImagePickerWidget(controller: imagePickerController2,),
-    
-                 ImagePickerWidget(controller: imagePickerController3,),
-                          
-               ],
-             ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Obx(
+                    () => ImagePickerWidget(
+                      imagePath: controller.imageFile2.value,
+                      onImgRemovedPressed: () {
+                        controller.removeImage2();
+                      },
+                      onPressedCamera: () {
+                        controller.pickImage(ImageSource.camera, 2);
+                      },
+                      onPressedGallery: () {
+                        controller.pickImage(ImageSource.gallery, 2);
+                      },
+                      onPressedBackButton: () {
+                        Get.back();
+                      },
+                    ),
+                  ),
+                  Obx(
+                    () => ImagePickerWidget(
+                      imagePath: controller.imageFile3.value,
+                      onImgRemovedPressed: () {
+                        controller.removeImage3();
+                      },
+                      onPressedCamera: () {
+                        controller.pickImage(ImageSource.camera, 3);
+                      },
+                      onPressedGallery: () {
+                        controller.pickImage(ImageSource.gallery, 3);
+                      },
+                      onPressedBackButton: () {
+                        Get.back();
+                      },
+                    ),
+                  ),
+                  Obx(
+                    () => ImagePickerWidget(
+                      imagePath: controller.imageFile4.value,
+                      onImgRemovedPressed: () {
+                        controller.removeImage4();
+                      },
+                      onPressedCamera: () {
+                        controller.pickImage(ImageSource.camera, 4);
+                      },
+                      onPressedGallery: () {
+                        controller.pickImage(ImageSource.gallery, 4);
+                      },
+                      onPressedBackButton: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 15.0,
               ),
-              
-    
-    
+
               // Submit Button
-    
+
               Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 60.0, bottom: 100.0),
@@ -233,8 +308,11 @@ class RegistrationScreen extends StatelessWidget {
                       btnTextColor: AppColors.secondaryBackground,
                       btnTextFontSize: 16.0,
                       onChanged: () {
-                        Get.to(
-                         ()=> SignInScreen());
+                        if (widget.isFrom) {
+                          Get.to(() => SignInScreen());
+                        } else {
+                          Get.back();
+                        }
                       },
                       title: AppString.regBtnTxt,
                       btnHeight: 44),
@@ -247,22 +325,3 @@ class RegistrationScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

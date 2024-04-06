@@ -1,14 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:divyangjan_frontend/Admin/AdminDashboard/view/dashboard_screen.dart';
 import 'package:divyangjan_frontend/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Admin/RegisteredCandidates/views/eligibility_screen.dart';
-// import 'package:google_fonts/google_fonts.dart';
+
+
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -24,17 +25,20 @@ class MyApp extends StatelessWidget {
         getPages: [
           GetPage(
             name: '/adminDashboardRouteName',
-            page: () => const AdminDashboard(),
+            page: () =>  AdminDashboard(),
           ),
-          GetPage(
-            name: '/eligibilityScreenRoute',
-            page: () => const EligibilityScreen(),
-          ),
-          GetPage(
-            name: '/registrationForm',
-            page: (() => RegistrationScreen()),
-          ),
+          // GetPage(
+          //   name: '/eligibilityScreenRoute',
+          //   page: () =>  EligibilityScreen(),
+          // ),
+          // GetPage(
+          //   name: '/registrationForm',
+          //   page: (() => RegistrationScreen(isFrom: false)),
+          // ),
+          // GetPage(
+          //     name: '/eligibleCandidateScreenRoute',
+          //     page: () => RegistratedCandidatesWidget()),
         ],
-        home: const AdminDashboard());
+        home: RegistrationScreen(isFrom: true));
   }
 }

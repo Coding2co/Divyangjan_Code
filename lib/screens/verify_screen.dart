@@ -61,7 +61,7 @@ class PhoneVerify extends StatelessWidget {
                   title: AppString.verifyBtnTxt,
                   btnTxtSpace: 1.0,
                   onChanged: () {
-                    Get.to(() => RegistrationScreen());
+                    Get.to(() => RegistrationScreen(isFrom: true));
                   },
                   btnTextColor: Colors.white,
                 ),

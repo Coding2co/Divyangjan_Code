@@ -35,12 +35,12 @@ class AppString{
   static const String regAge = "Age";
   static const String regGender = "Gender";
   static const String regOccup = "Occupation";
-  static const String regState = "State";
+  static const String regState = "Select State";
  //disability
   static const String loco = "Locomotive disability?";
   static const String regSec2 = "Disability Details";
   static const String regDesp = "Short Description  about your disability..";
-  static const String imgTxt = "Upload disability Photo";
+  static const String imgTxt = "Upload Photo";
   static const String cam = "Camera";
   static const String gallery = "Gallery";
 
@@ -92,4 +92,6 @@ class AppString{
   static const String eligibleCandi = "Eligible Candidates";
   static const String ineligibleCandi = "InEligible Candidates";
   // static const String view = "View";
+  static const String searchLabel = "Search Candidates...";
+  static const String  totCandi= "Total candidates: ";
 }

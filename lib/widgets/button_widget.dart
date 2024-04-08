@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 class ButtonWidget extends StatelessWidget {
   final String title;
   final Function onChanged;
-  final double btnWidth;
-  final double btnHeight;
+  final double? btnWidth;
+  final double? btnHeight;
   final double btnBorderRadius;
   final Color btnColor;
   final Color? btnTextColor;
@@ -16,11 +16,12 @@ class ButtonWidget extends StatelessWidget {
   final double? btnTextFontSize;
   final double? btnTxtSpace;
   final Color? btnBorderColor;
+  final bool? visible;
 
   const ButtonWidget({
     Key? key,
-    required this.btnWidth,
-    required this.btnHeight,
+     this.btnWidth,
+     this.btnHeight,
     required this.btnBorderRadius,
     required this.btnColor,
     required this.onChanged,
@@ -29,7 +30,7 @@ class ButtonWidget extends StatelessWidget {
     this.btnTextFontWeight,
     this.btnTextFontSize,
     this.btnTxtSpace,
-    this.btnBorderColor,
+    this.btnBorderColor, this.visible,
   });
 
   @override
@@ -37,26 +38,29 @@ class ButtonWidget extends StatelessWidget {
     return SizedBox(
       width: btnWidth,
       height: btnHeight,
-      child: ElevatedButton(
-        onPressed: () {
-          onChanged(); 
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(btnColor),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(btnBorderRadius),
-                side: BorderSide(
-                  color: btnBorderColor ?? Colors.transparent,
-                  width: 3.0,
-                )),
+      child: Visibility(
+        visible: visible ?? true,
+        child: ElevatedButton(
+          onPressed: () {
+            onChanged(); 
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(btnColor),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(btnBorderRadius),
+                  side: BorderSide(
+                    color: btnBorderColor ?? Colors.transparent,
+                    width: 3.0,
+                  )),
+            ),
           ),
+          child: TextWidget(
+              title: title,
+              textColor: btnTextColor ?? AppColors.secondaryText,
+              textFontSize: btnTextFontSize ?? 16.0,
+              textFontWeight: btnTextFontWeight ?? FontWeight.normal),
         ),
-        child: TextWidget(
-            title: title,
-            textColor: btnTextColor ?? AppColors.secondaryText,
-            textFontSize: btnTextFontSize ?? 16.0,
-            textFontWeight: btnTextFontWeight ?? FontWeight.normal),
       ),
     );
   }

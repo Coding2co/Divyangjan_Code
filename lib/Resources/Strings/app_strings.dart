@@ -94,4 +94,14 @@ class AppString{
   // static const String view = "View";
   static const String searchLabel = "Search Candidates...";
   static const String  totCandi= "Total candidates: ";
+
+
+  // Campaign Details Card;
+  static const String campName = "Campaign Name";
+  static const String campAddress = "Campaign Address";
+  static const String totSeats = "Total Seats";
+  static const String availSeats = "Available Seats";
+  static const String occuSeats = "Occupied Seats";
+  static const String dueDate = "Due Date";
+  static const String startDate = "Start Date";
 }

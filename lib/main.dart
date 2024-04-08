@@ -5,6 +5,8 @@ import 'package:divyangjan_frontend/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'screens/campaign_details_screen.dart';
+
 
 
 
@@ -39,6 +41,6 @@ class MyApp extends StatelessWidget {
           //     name: '/eligibleCandidateScreenRoute',
           //     page: () => RegistratedCandidatesWidget()),
         ],
-        home: RegistrationScreen(isFrom: true));
+        home: CampaignDetailsScreen());
   }
 }

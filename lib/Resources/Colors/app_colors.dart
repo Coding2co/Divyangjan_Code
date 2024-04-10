@@ -14,6 +14,6 @@ static const Color completedColor =  Color(0xFF046A38);
 static const Color enrolledColor =Color(0xFF90EE90);
 static const Color navyBlue =Color(0xFF192559);
 static const Color bluue =Color(0xFF276FE4);
-
+static const Color boxShadowColor = Color(0x33000000);
 
 }

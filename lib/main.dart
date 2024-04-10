@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:divyangjan_frontend/Admin/AdminDashboard/view/dashboard_screen.dart';
+import 'package:divyangjan_frontend/Profile/view/profile_screen.dart';
 import 'package:divyangjan_frontend/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,6 @@ class MyApp extends StatelessWidget {
           //     name: '/eligibleCandidateScreenRoute',
           //     page: () => RegistratedCandidatesWidget()),
         ],
-        home: CampaignDetailsScreen());
+        home: ProfileScreen());
   }
 }

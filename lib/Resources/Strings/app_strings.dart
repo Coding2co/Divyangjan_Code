@@ -104,4 +104,18 @@ class AppString{
   static const String occuSeats = "Occupied Seats";
   static const String dueDate = "Due Date";
   static const String startDate = "Start Date";
+
+
+  //profileScreen
+  static const String pro = "Profile";
+  static const String account = "Your Account";
+  static const String appSetting = "App Settings";
+  static const String editPro = "Edit Profile";
+  static const String support = "Support";
+  static const String terms = "Terms of Service";
+  static const String faq = "FAQ";
+  static const String privacy = "Privacy Policy";
+  
+
+  
 }

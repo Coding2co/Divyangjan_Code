@@ -4,10 +4,11 @@ class TextWidget extends StatelessWidget {
   final String title;
   final Color textColor;
   final double textFontSize;
-  final FontWeight textFontWeight;
+  final FontWeight? textFontWeight;
   final double? textSpace;
   final TextAlign? align;
-  const TextWidget({super.key,required this.title,required this.textColor,required this.textFontSize,required this.textFontWeight,this.textSpace,this.align});
+  final TextOverflow? overflow;
+  const TextWidget({super.key,required this.title,required this.textColor,required this.textFontSize, this.textFontWeight,this.textSpace,this.align,this.overflow});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class TextWidget extends StatelessWidget {
               letterSpacing: textSpace,
               
             ),
+            overflow: overflow,
       
     );
   }

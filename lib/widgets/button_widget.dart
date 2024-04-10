@@ -51,7 +51,7 @@ class ButtonWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(btnBorderRadius),
                   side: BorderSide(
                     color: btnBorderColor ?? Colors.transparent,
-                    width: 3.0,
+                    width: 2.0,
                   )),
             ),
           ),

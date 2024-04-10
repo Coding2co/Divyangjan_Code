@@ -1,3 +1,4 @@
+import 'package:divyangjan_frontend/Profile/widgets/content_view_widget.dart';
 import 'package:divyangjan_frontend/Resources/Colors/app_colors.dart';
 import 'package:divyangjan_frontend/Resources/Strings/app_strings.dart';
 import 'package:divyangjan_frontend/widgets/campaign_details_card.dart';
@@ -5,25 +6,24 @@ import 'package:divyangjan_frontend/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class CampaignDetailsScreen extends StatelessWidget {
- 
   const CampaignDetailsScreen({super.key});
-   
+
   @override
   Widget build(BuildContext context) {
-     final List<TitleValueModel>items =[
-      TitleValueModel(title: AppString.campName,value: 'Vizag Steel Plant AMTZ'),
-      TitleValueModel(title: AppString.campAddress,value: 'AndhraPradesh MedtechZone AndhraPradesh India 543433 AndhraPradesh MedtechZone'),
-      TitleValueModel(title: AppString.totSeats,value: '500'),
-      TitleValueModel(title: AppString.totCandi,value: '300'),
-      TitleValueModel(title: AppString.availSeats,value: '200'),
-      TitleValueModel(title: AppString.dueDate,value: '12-04-2024'),
-      TitleValueModel(title: AppString.startDate,value: '27-04-2024'),
-      
-
-     ];
+    final List<TitleValueModel> items = [
+      TitleValueModel(
+          title: AppString.campName, value: 'Vizag Steel Plant AMTZ'),
+      TitleValueModel(
+          title: AppString.campAddress,
+          value:
+              'AndhraPradesh MedtechZone AndhraPradesh India 543433 AndhraPradesh MedtechZone'),
+      TitleValueModel(title: AppString.totSeats, value: '500'),
+      TitleValueModel(title: AppString.totCandi, value: '300'),
+      TitleValueModel(title: AppString.availSeats, value: '200'),
+      TitleValueModel(title: AppString.dueDate, value: '12-04-2024'),
+      TitleValueModel(title: AppString.startDate, value: '27-04-2024'),
+    ];
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
@@ -42,7 +42,7 @@ class CampaignDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                //navigation to back page.
+                //
               },
               icon: const Icon(
                 Icons.close_rounded,
@@ -54,12 +54,18 @@ class CampaignDetailsScreen extends StatelessWidget {
         backgroundColor: AppColors.primaryBackground,
       ),
       body: SafeArea(
-        child:DetailCardWidget(isAdmin: false, btn1Name: 'Enroll', onPressedView: (){
-          Get.defaultDialog(title: 'helo motto',);
-        },items: items,btn2Name: 'Update',) ),
-      
+        child: DetailCardWidget(
+          isAdmin: false,
+          btn1Name: 'Enroll',
+          onPressedView: () {
+            Get.defaultDialog(
+              title: 'helo motto',
+            );
+          },
+          items: items,
+          btn2Name: 'Update',
+        ),
+      ),
     );
-
   }
-
 }

@@ -40,7 +40,7 @@ class RichTextWidget extends StatelessWidget {
                 textFontWeight: FontWeight.w600)),
         Flexible(
             child: TextWidget(
-                title: ':$content',
+                title: ': $content',
                 textColor: contentColor ?? AppColors.secondaryText,
                 textFontSize: contentFontSize ?? 14.0,
                 textFontWeight: contentFontWeight ?? FontWeight.w500)),

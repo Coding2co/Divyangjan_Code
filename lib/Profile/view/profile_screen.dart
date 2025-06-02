@@ -64,21 +64,24 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                     SizedBox(width: 14.0),
+                    SizedBox(width: 14.0),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children:const [
-                            TextWidget(
-                              title: 'Andhra Pradesh MedTech Zone,Visakhapatnam, India',
-                              textColor: AppColors.blackText,
-                              textFontSize: 16, 
-                              overflow:TextOverflow.fade,
-                            ),
-                           SizedBox(height: 4.0,),
-                           TextWidget(
+                        children: const [
+                          TextWidget(
+                            title:
+                                'Andhra Pradesh MedTech Zone,Visakhapatnam, India',
+                            textColor: AppColors.blackText,
+                            textFontSize: 16,
+                            overflow: TextOverflow.fade,
+                          ),
+                          SizedBox(
+                            height: 4.0,
+                          ),
+                          TextWidget(
                             title: '9390232323',
                             textColor: AppColors.secondaryText,
                             textFontSize: 14,
@@ -86,12 +89,11 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0,top: 10.0),
+                padding: const EdgeInsets.only(left: 8.0, top: 10.0),
                 child: TextWidget(
                   title: AppString.account,
                   textColor: AppColors.secondaryText,
@@ -151,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                   onChanged: () => Get.defaultDialog(title: 'Working Here'),
                 ),
               ),
-                  ContentViewWidget(
+              ContentViewWidget(
                 leadingIcon: Icon(
                   Icons.description_outlined,
                   size: 24,
@@ -181,10 +183,18 @@ class ProfileScreen extends StatelessWidget {
                   onChanged: () => Get.defaultDialog(title: 'Working Here'),
                 ),
               ),
-           
               Padding(
                 padding: const EdgeInsets.only(top: 123.0),
-                child: Center(child: ButtonWidget(btnBorderRadius: 50,btnHeight: 50, btnColor: AppColors.primaryText, onChanged: (){}, title: 'Log Out',btnBorderColor: AppColors.secondaryBackground,btnTextColor: AppColors.secondaryBackground,)),
+                child: Center(
+                    child: ButtonWidget(
+                  btnBorderRadius: 50,
+                  btnHeight: 50,
+                  btnColor: AppColors.primaryText,
+                  onChanged: () {},
+                  title: 'Log Out',
+                  btnBorderColor: AppColors.secondaryBackground,
+                  btnTextColor: AppColors.secondaryBackground,
+                )),
               )
             ],
           ),
